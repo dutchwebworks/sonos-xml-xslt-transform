@@ -4,14 +4,34 @@
   <html>
   <body>
   <h2>My CD Collection</h2>
+	<p>Site: <a href="http://www.freeformatter.com/xsl-transformer.html">http://www.freeformatter.com/xsl-transformer.html</a></p>
 	<table border="1">
 	  <tr bgcolor="#9acd32">
 		<th>Track</th>
+		<th>Artist</th>
+		<th>Album</th>
 	  </tr>
 	  <xsl:for-each select="SavedQueues/SavedQueue/Track">
 	  <tr>
-		<td><xsl:value-of select="@MD"/></td>
-	  </tr>
+	  	<xsl:value-of select="@MD">
+	  	   <xsl:copy>
+	  	     <COMPANY>
+	  	       <xsl:value-of select="normalize-space(substring-before(., ','))"/>
+	  	     </COMPANY>
+	  	     <xsl:variable name="s1" select="substring-after(., ',')"/>
+	  	     <ADDRESS>
+	  	       <xsl:value-of select="normalize-space(substring-before($s1, ','))"/>
+	  	     </ADDRESS>
+	  	     <xsl:variable name="s2" select="substring-after($s1, ',')"/>
+	  	     <ZIPCODE>
+	  	       <xsl:value-of select="normalize-space(substring-before($s2, ','))"/>
+	  	     </ZIPCODE>
+	  	     <CITY>
+	  	       <xsl:value-of select="normalize-space(substring-after($s2, ','))"/>
+	  	     </CITY>
+	  	   </xsl:copy>
+	  	 </xsl:value-of>
+		</tr>
 	  </xsl:for-each>
 	</table>
   </body>
