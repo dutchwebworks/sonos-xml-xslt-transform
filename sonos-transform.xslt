@@ -6,11 +6,14 @@
   <h2>My CD Collection</h2>
 	<p>Site: <a href="http://www.freeformatter.com/xsl-transformer.html">http://www.freeformatter.com/xsl-transformer.html</a></p>
 	<table border="1">
-	  <tr bgcolor="#9acd32">
+		<thead>
+	  <tr>
 		<th>Track</th>
 		<th>Artist</th>
 		<th>Album</th>
 	  </tr>
+	</thead>
+		<tbody>
 	  <xsl:for-each select="SavedQueues/SavedQueue/Track">
 	  <tr>
 	  	<xsl:value-of select="@MD">
@@ -33,6 +36,7 @@
 	  	 </xsl:value-of>
 		</tr>
 	  </xsl:for-each>
+	</tbody>
 	</table>
   </body>
   </html>
