@@ -5,6 +5,7 @@
   <body>
   <h2>My CD Collection</h2>
 	<p>Site: <a href="http://www.freeformatter.com/xsl-transformer.html">http://www.freeformatter.com/xsl-transformer.html</a></p>
+	<p>Split on node comma list <a href="http://stackoverflow.com/questions/31004343/xslt-1-0-split-comma-seperated-string-into-named-nodes">http://stackoverflow.com/questions/31004343/xslt-1-0-split-comma-seperated-string-into-named-nodes</a></p>
 	<table border="1">
 		<thead>
 	  <tr>
