@@ -4,15 +4,41 @@
   <html>
   <body>
   <h2>My CD Collection</h2>
+	<p>Site: <a href="http://www.freeformatter.com/xsl-transformer.html">http://www.freeformatter.com/xsl-transformer.html</a></p>
+	<p>Split on node comma list <a href="http://stackoverflow.com/questions/31004343/xslt-1-0-split-comma-seperated-string-into-named-nodes">http://stackoverflow.com/questions/31004343/xslt-1-0-split-comma-seperated-string-into-named-nodes</a></p>
+	<p>xsltproc -o result.html sonos-transform.xslt sonos-sample.xml</p>
 	<table border="1">
-	  <tr bgcolor="#9acd32">
+		<thead>
+	  <tr>
 		<th>Track</th>
+		<th>Artist</th>
+		<th>Album</th>
 	  </tr>
+	</thead>
+		<tbody>
 	  <xsl:for-each select="SavedQueues/SavedQueue/Track">
 	  <tr>
-		<td><xsl:value-of select="@MD"/></td>
-	  </tr>
+	  	<xsl:value-of select="@MD">
+	  	   <xsl:copy>
+	  	     <td>
+	  	       <xsl:value-of select="normalize-space(substring-before(., ','))"/>
+	  	     </td>
+	  	     <xsl:variable name="s1" select="substring-after(., ',')"/>
+	  	     <td>
+	  	       <xsl:value-of select="normalize-space(substring-before($s1, ','))"/>
+	  	     </td>
+	  	     <xsl:variable name="s2" select="substring-after($s1, ',')"/>
+	  	     <td>
+	  	       <xsl:value-of select="normalize-space(substring-before($s2, ','))"/>
+	  	     </td>
+	  	     <td>
+	  	       <xsl:value-of select="normalize-space(substring-after($s2, ','))"/>
+	  	     </td>
+	  	   </xsl:copy>
+	  	 </xsl:value-of>
+		</tr>
 	  </xsl:for-each>
+	</tbody>
 	</table>
   </body>
   </html>
