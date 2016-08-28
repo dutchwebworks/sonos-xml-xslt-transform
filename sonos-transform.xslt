@@ -18,20 +18,20 @@
 	  <tr>
 	  	<xsl:value-of select="@MD">
 	  	   <xsl:copy>
-	  	     <COMPANY>
+	  	     <td>
 	  	       <xsl:value-of select="normalize-space(substring-before(., ','))"/>
-	  	     </COMPANY>
+	  	     </td>
 	  	     <xsl:variable name="s1" select="substring-after(., ',')"/>
-	  	     <ADDRESS>
+	  	     <td>
 	  	       <xsl:value-of select="normalize-space(substring-before($s1, ','))"/>
-	  	     </ADDRESS>
+	  	     </td>
 	  	     <xsl:variable name="s2" select="substring-after($s1, ',')"/>
-	  	     <ZIPCODE>
+	  	     <td>
 	  	       <xsl:value-of select="normalize-space(substring-before($s2, ','))"/>
-	  	     </ZIPCODE>
-	  	     <CITY>
+	  	     </td>
+	  	     <td>
 	  	       <xsl:value-of select="normalize-space(substring-after($s2, ','))"/>
-	  	     </CITY>
+	  	     </td>
 	  	   </xsl:copy>
 	  	 </xsl:value-of>
 		</tr>
